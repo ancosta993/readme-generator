@@ -72,7 +72,7 @@ const projectQuestions = (readmeData) => {
          type:"list",
          name:"license",
          message:"Choose project license",
-         choices: ['None','MIT','Artistic license 2.0','Bosst Software License 1.0','BSD 2-clause','Creative Commons license family','Educational Community License v2.0','Eclipse Public License 2.0','GNU Publice License v2.0','ISC',"Microsoft Public License",'Open Software License', 'Mozilla Public License 2.0','The Unlicense']
+         choices: ['none', 'MIT',"Apache License 2.0","BSD 3 Clause License","Mozilla Public License 2.0"]
       },
    ]).then(projectAnswers => {
       readmeData.projectInfo.push(projectAnswers);
@@ -92,7 +92,7 @@ const mockData = {
        usage: 'q',
        contributionGuide: 'q',
        testInfo: 'q',
-       license: 'None'
+       license: 'MIT'
      }
    ]
  }

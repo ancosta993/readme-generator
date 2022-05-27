@@ -1,8 +1,43 @@
+
+const renderLicense = (projectInfo) => {
+   if (projectInfo.license !== 'none') {
+      return `![badge](https://img.shields.io/badge/License-${projectInfo.license}-green)`;
+   } else {
+      return ``;
+   }
+};
+
+const licenseLink = (projectInfo) => {
+   return (projectInfo.license === 'MIT') ? `[${projectInfo.license} License](https://opensource.org/licenses/MIT)`
+      : (projectInfo.license === 'Apache License 2.0' ) ? `[${projectInfo.license}](https://opensource.org/licenses/Apache-2.0)`
+      : (projectInfo.license === 'BSD 3 Clause License' ) ? `[${projectInfo.license}](https://opensource.org/licenses/BSD-3-Clause)`
+      : (projectInfo.license === 'Mozilla Public License 2.0') ? `[${projectInfo.license}](https://opensource.org/licenses/MPL-2.0)`
+      : ``;
+};
+
+const licenseSection = (projectInfo) => {
+   let licenseText = 
+   `## License
+   This project is licensed through 
+   `;
+
+   if (projectInfo.license !== 'none') {
+      return licenseText;
+   } else {
+      return ``;
+   }
+   
+};
+
+
+
+
 module.exports = readmeData => {
    const {projectInfo, ...userInfo} = readmeData;
    return `
-# ${projectInfo[0].title}
+${renderLicense(projectInfo[0])}
 
+# ${projectInfo[0].title}
 ## Description 
 ${projectInfo[0].description}
 
@@ -17,14 +52,13 @@ ${projectInfo[0].description}
 
 ## Installation
 ${projectInfo[0].installation}
-
 ## Usage
-
-## License
-
-## Contributing
-
+${projectInfo[0].usage}
 ## Tests
+${projectInfo[0].testInfo}
+${licenseSection(projectInfo[0])} ${licenseLink(projectInfo[0])}
+## Contributing
+${projectInfo[0].contributionGuide}
 
 ## Questions
 - GitHub: [${userInfo.username}](${userInfo.link})
