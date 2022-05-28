@@ -5,80 +5,68 @@ const generatePage = require('./page-template');
 
 // TODO: Create an array of questions for user input
 
-const userQuestions = () => {
+const questions = [
 
-   return inquirer.prompt([
-
-      {
-         type:"input",
-         name:'username',
-         message:"Enter your GitHub username"
-      },
-      {
-         type:'input',
-         name:'link',
-         message:"Link to your GitHhub Account"
-      },
-      {
-         type:'input',
-         name:'email',
-         message:"Enter your email address"
-      }
-   ])
-};
-
-const projectQuestions = (readmeData) => {
-   if (!readmeData.projectInfo){
-      readmeData.projectInfo = [];
+   // User related Questions Start
+   {
+      type:"input",
+      name:'username',
+      message:"Enter your GitHub username"
+   },
+   {
+      type:'input',
+      name:'link',
+      message:"Link to your GitHhub Account"
+   },
+   {
+      type:'input',
+      name:'email',
+      message:"Enter your email address"
+   },
+   // Project Related Questions start
+   {
+      type:"input",
+      name:'title',
+      message:'Enter Project Title'
+   },
+   {
+      type:"input",
+      name:"description",
+      message:"Enter project description"
+   },
+   {
+      type:"input",
+      name:"installation",
+      message: "Enter project installation"
+   },
+   {
+      type:"input",
+      name:"usage",
+      message: "Enter the Usage of the project"
+   },
+   {
+      type:"input",
+      name:"contributionGuide",
+      message:"What are the contribution guidelines?"
+   },
+   {
+      type:'input',
+      name:'testInfo',
+      message:'Enter the test instructions'
+   },
+   {
+      type:"list",
+      name:"license",
+      message:"Choose project license",
+      choices: ['none', 'MIT',"Apache 2.0","BSD 3 Clause ","Mozilla Public 2.0"]
    }
-   console.log(`
-   =================
-   Add a New Project
-   =================
-   `);
+]
 
-   return inquirer.prompt([
-      {
-         type:"input",
-         name:'title',
-         message:'Enter Project Title'
-      },
-      {
-         type:"input",
-         name:"description",
-         message:"Enter project description"
-      },
-      {
-         type:"input",
-         name:"installation",
-         message: "Enter project installation"
-      },
-      {
-         type:"input",
-         name:"usage",
-         message: "Enter the Usage of the project"
-      },
-      {
-         type:"input",
-         name:"contributionGuide",
-         message:"What are the contribution guidelines?"
-      },
-      {
-         type:'input',
-         name:'testInfo',
-         message:'Enter the test instructions'
-      },
-      {
-         type:"list",
-         name:"license",
-         message:"Choose project license",
-         choices: ['none', 'MIT',"Apache License 2.0","BSD 3 Clause License","Mozilla Public License 2.0"]
-      },
-   ]).then(projectAnswers => {
-      readmeData.projectInfo.push(projectAnswers);
-      return readmeData;
-   });
+// function to prompt answers for the questions
+const askQustions = (questions) => {
+   return inquirer.prompt(questions);
 };
+
 
 const mockData = {
    username: 'ancosta993',
@@ -100,11 +88,9 @@ const mockData = {
 // userQuestions()
    // .then(projectQuestions)
    // .then(readmeData => {
-      const pageText = generatePage(mockData);
-      writeToFile('./README.md', pageText);
+      // const pageText = generatePage(mockData);
+      // writeToFile('./README.md', pageText);
    // });
-
-
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
@@ -116,7 +102,13 @@ function writeToFile(fileName, data) {
 }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+   askQustions(questions) // questions is a global variable
+      .then(readMeData => {
+         const pageText = generatePage(readMeData);
+         writeToFile('./README.md', pageText);
+      });
+};
 
 // Function call to initialize app
 init();
