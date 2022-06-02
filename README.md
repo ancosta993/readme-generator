@@ -1,31 +1,37 @@
+# README.md Generator
 
-![badge](https://img.shields.io/badge/License-MIT-green)
-
-# qw
 ## Description 
-qw
+This application prompts the user for entering information they want in the README.md file. The application specifically asks for: Description, Installation, Usage, License, Contribution Guidelines, Testing instructions, and questions for further contact. The user types the information in the command line of their operating system and generates the readme file with those inputs.
+
+## Tools
+The aplication uses Node.js to complete the project.
+The Node Packages used here are: inquirer.js and file system modules.
+
 
 ## Table of Contents
 - **[Description](#description)**
 - **[Installation Instruction](#installation)**
 - **[Usage Information](#usage)**
-- **[License](#license)**
-- **[Contribution Guidelines](#contributing)**
-- **[Tests Instructions](#tests)**
-- **[Questions](#questions)**
-
+- 
 ## Installation
-qw
-## Usage
-qw
-## Tests
-qw
-## License
-   This project is licensed through 
-    [MIT License](https://opensource.org/licenses/MIT)
-## Contributing
-qw
+In order to use the project, the user needs to install Node.js and download necessary node modules.
+After the Node.js is installed, `npm install inquirer` needs to be run. File system is already installed in with the Node.js
 
-## Questions
-- GitHub: [qw](qw)
-- Email: qw
+
+## Usage
+The application is initiated with the command line instruction `node Index.js`
+
+- The user is prompted, one by one, to type in input.
+- The prompts include: 
+   - Description
+   - Installation Guide
+   - Usage Information
+   - License (The user is given a choice for the available license)
+   - Contribution Guidelines
+   - Testing Information
+   - Questions
+The README.md page is created immediately after all the prompts are anwered.
+
+## Function (psudocode)
+
+
