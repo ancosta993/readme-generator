@@ -13,7 +13,7 @@ The Node Packages used here are: inquirer.js and file system modules.
 - **[Description](#description)**
 - **[Installation Instruction](#installation)**
 - **[Usage Information](#usage)**
-- 
+- **[Function](#function-(psudocode))**
 ## Installation
 In order to use the project, the user needs to install Node.js and download necessary node modules.
 After the Node.js is installed, `npm install inquirer` needs to be run. File system is already installed in with the Node.js
@@ -34,5 +34,25 @@ The application is initiated with the command line instruction `node Index.js`
 The README.md page is created immediately after all the prompts are anwered.
 
 ## Function (psudocode)
+### Stage 1: Prompt the user for Information.
+- Use the inquirer package to prompt the user to input information for every sections.
+- For the License section, make a list type of prompt.
+- The `askQuestions(questions)` function will ask the questions. It will take a list and return a promise
+
+### Stage 2: Generate the Test Document
+- `.then()` method is used to take the promise and apply `generatePage(readMeData)` function.
+   - Here, readMeData is the promise. The `generatePage` function is written in a different file named page-template.js and exported from there.
+
+- **Inside the page-template.js:**
+     - returns string literals.
+     - There are three functions for handling license: `renderLicense`, `licenseLink`, `licenseNavLink`, `licenseSection`.
+     - Rest is just different sections of readme file.
+### Stage 3: Write to the File
+- `writeToFile(fileName, data)` writes the data to the file with the location fileName.
+- it uses the file system module: `fs.writeFile(fileName, data, function(err){})`.
+- It generates a READMETest.md file. This is the final result.
+
+   
+
 
 
