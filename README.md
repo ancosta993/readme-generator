@@ -13,7 +13,7 @@ The Node Packages used here are: inquirer.js and file system modules.
 - **[Description](#description)**
 - **[Installation Instruction](#installation)**
 - **[Usage Information](#usage)**
-- **[Function](#function-(psudocode))**
+- **[Function](#function-psudocode)**
 ## Installation
 In order to use the project, the user needs to install Node.js and download necessary node modules.
 After the Node.js is installed, `npm install inquirer` needs to be run. File system is already installed in with the Node.js
